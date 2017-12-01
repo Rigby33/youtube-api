@@ -6,6 +6,11 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  background-color: #F9F6E8
+}
+
+a {
+  text-decoration: none;
 }
 
 header {
@@ -34,12 +39,16 @@ input {
 
 button {
   padding: 10px;
-  background-color: #FE0303;
+  background-color: #E2444C;
   color: #ffffff;
   border: none;
   text-transform: uppercase;
   margin: 0 0 0 10px;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #C95D63
 }
 
 main {
@@ -58,21 +67,34 @@ main {
 h2 {
   font-size: 16px;
   font-weight: normal;
-  margin-bottom: 15px
+  margin-bottom: 15px;
+
+  text-transform: uppercase;
+}
+
+a h2 {
+  color: #226F54;
 }
 
 .videoResult {
   margin:0 5px 30px 5px;
-  padding: 15px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width:20%;
-  border: 1px solid #000000
+  justify-content: flex-end;
+  width:30%;
+  background-color: #ffffff;
+  transition: all .5s ease-in-out;
+  border-bottom: 5px solid #87C38F
+}
+
+.videoResult:hover {
+  border-bottom: 5px solid #67AF8D
 }
 
 .videoResult img {
-  width:100%
+  width:100%;
+  margin-bottom: 10px
 }
 
 .pagination {
@@ -84,6 +106,7 @@ h2 {
 /*lightbox*/
 
 .lightbox {
+  display:none;
   position: fixed;
   top: 0;
   left: 0;

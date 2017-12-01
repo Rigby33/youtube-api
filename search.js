@@ -23,10 +23,11 @@ function getDataFromApi (searchTerm, pageToken, callback) {
 
 function renderYoutubeResults (result) {
   return `<div class="videoResult">
-  <h2>${result.snippet.title}</h2>
-  <a href="http://youtube.com/watch?v=${result.id.videoId}">
+    <a href="https://youtube.com/watch?v=${result.id.videoId}" target="_blank" class="youtubelink"><h2>${result.snippet.title}</h2></a>
+  <a href="https://youtube.com/watch?v=${result.id.videoId}" target="_blank" class="youtubelink">
   <img src="${result.snippet.thumbnails.high.url}" alt="${result.snippet.title}"/>
   </a>
+  <p>View more videos from <a href="https://www.youtube.com/channel/${result.snippet.channelId}" target="_blank">${result.snippet.channelTitle}</a></p>
   </div>`
 }
 
@@ -62,8 +63,16 @@ function watchSubmit() {
     // queryTarget.val("");
     getDataFromApi(query, null, displayYouTubeSearchData);
     $('.pagination').show();
+    // lightboxRun();
   });
 }
+
+// function lightboxRun () {
+//   $('.youtubelink').on('click', function (event) {
+//     event.preventDefault();
+//     $('.lightbox').show();
+//   });
+// }
 
 
 $(watchSubmit);
