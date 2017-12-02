@@ -8,7 +8,7 @@ function getDataFromApi (searchTerm, pageToken, callback) {
       part: 'snippet',
       key: youtubeSearchApiKey,
       q: `${searchTerm}`,
-      maxResults: '25',
+      maxResults: '30',
       type: 'video',
     },
     dataType: 'json',
@@ -20,18 +20,18 @@ function getDataFromApi (searchTerm, pageToken, callback) {
   }
   $.ajax(settings);
 }
-
+// href="https://youtube.com/watch?v=${result.id.videoId}"
 function renderYoutubeResults (result) {
   return `<div class="videoResult">
-    <a href="https://youtube.com/watch?v=${result.id.videoId}" target="_blank" class="youtubelink"><h2>${result.snippet.title}</h2></a>
-  <a href="https://youtube.com/watch?v=${result.id.videoId}" target="_blank" class="youtubelink">
+    <a href="https://youtube.com/embed/${result.id.videoId}" target="_blank" class="youtubelink"><h2>${result.snippet.title}</h2></a>
+  <a href="https://youtube.com/embed/${result.id.videoId}" class="youtubelink">
   <img src="${result.snippet.thumbnails.high.url}" alt="${result.snippet.title}"/>
   </a>
   <p>View more videos from <a href="https://www.youtube.com/channel/${result.snippet.channelId}" target="_blank">${result.snippet.channelTitle}</a></p>
   </div>`
 }
 
-function displayYouTubeSearchData(data) {
+function displayYouTubeSearchData (data) {
   let nextPageToken = data.nextPageToken;
   let prevPageToken = data.prevPageToken;
   setPageTokens(nextPageToken, prevPageToken);
@@ -63,16 +63,25 @@ function watchSubmit() {
     // queryTarget.val("");
     getDataFromApi(query, null, displayYouTubeSearchData);
     $('.pagination').show();
-    // lightboxRun();
+    lightboxRun();
   });
 }
 
-// function lightboxRun () {
-//   $('.youtubelink').on('click', function (event) {
-//     event.preventDefault();
-//     $('.lightbox').show();
-//   });
-// }
+function lightboxRun () {
+  $('.js-search-results').on('click', '.videoResult .youtubelink', function (event) {
+    event.preventDefault();
+    console.log('hi');
+    const iframeVideo = $(event.currentTarget).attr('href');
+    const item = `<div class="lightbox"><button class="close"><i class="fa fa-times-circle" aria-hidden="true"></i></button><div class="videoWrapper"><iframe width="560" height="349" src="${iframeVideo}"></iframe></div></div>`;
+    $('.lightboxcontainer').hide().html(item).fadeIn();
+    closeLightBox();
+  });
+}
 
+function closeLightBox () {
+  $('.lightbox').on('click', '.close', function (event) {
+    $('.lightbox').fadeOut();
+  });
+}
 
 $(watchSubmit);

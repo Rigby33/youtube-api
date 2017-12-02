@@ -6,17 +6,23 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #F9F6E8
+  background-color: #F2F2F2;
+  color: #232C33;
 }
 
 a {
   text-decoration: none;
+  color: #4E90A3;
+}
+
+a:hover {
+  color: #52AFC9
 }
 
 header {
   margin: 0 auto;
   text-align: center;
-  padding:40px
+  padding:60px 40px 40px 40px
 }
 
 h1 {
@@ -34,25 +40,24 @@ form {
 input {
   font-size: 18px;
   padding: 10px;
-  width:40%
+  width: 50%;
+  border: none;
 }
 
 button {
-  padding: 10px;
-  background-color: #E2444C;
+  padding: 15px;
+  background-color: #F45B69;
   color: #ffffff;
   border: none;
   text-transform: uppercase;
   margin: 0 0 0 10px;
   cursor: pointer;
+  border-radius: 0;
+  font-size: 16px
 }
 
 button:hover {
   background-color: #C95D63
-}
-
-main {
-  padding: 0 100px 60px 100px
 }
 
 .js-search-results {
@@ -65,15 +70,10 @@ main {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: normal;
   margin-bottom: 15px;
-
   text-transform: uppercase;
-}
-
-a h2 {
-  color: #226F54;
 }
 
 .videoResult {
@@ -81,15 +81,14 @@ a h2 {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   width:30%;
   background-color: #ffffff;
   transition: all .5s ease-in-out;
-  border-bottom: 5px solid #87C38F
 }
 
 .videoResult:hover {
-  border-bottom: 5px solid #67AF8D
+  background-color: #E8E8E8
 }
 
 .videoResult img {
@@ -98,7 +97,7 @@ a h2 {
 }
 
 .pagination {
-  margin: 0 auto;
+  margin: 40px auto;
   text-align: center;
   display: none;
 }
@@ -106,7 +105,6 @@ a h2 {
 /*lightbox*/
 
 .lightbox {
-  display:none;
   position: fixed;
   top: 0;
   left: 0;
@@ -115,3 +113,95 @@ a h2 {
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
 }
+
+.videoWrapper {
+	position: relative;
+	/*padding-bottom: 56.25%; /* 16:9 */
+	/*padding-top: 25px;*/
+	height: 0;
+  width:70%;
+  padding: 25px 0 56.25% 0;
+  margin: 60px auto 0 auto;
+  text-align: center
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 70%;
+  border:none;
+}
+
+.close {
+  position: absolute;
+  z-index: 1;
+  top: 2%;
+  left: 85%;
+  font-size: 40px;
+  background-color: transparent;
+  padding: 0
+}
+
+.close:hover{
+  color: #F45B69;
+  background-color: transparent;
+  padding: 0
+}
+
+.close:focus{
+  color: #F45B69;
+  background-color: transparent;
+  padding: 0
+}
+
+@media only screen and (max-width : 768px) {
+  main {
+    padding: 0 20px 60px 20px;
+  }
+  h1 {
+    font-size: 60px
+  }
+    }
+    /* Custom, iPhone Retina */
+        @media only screen and (min-width : 320px) {
+
+        }
+
+        /* Extra Small Devices, Phones */
+        @media only screen and (min-width : 480px) {
+
+        }
+
+        /* Small Devices, Tablets */
+        @media only screen and (min-width : 768px) {
+          .videoResult{
+            width: 100%
+          }
+
+        }
+
+        /* Medium Devices, Desktops */
+        @media only screen and (min-width : 992px) {
+          main {
+            padding: 0 20px 60px 20px;
+          }
+          .videoResult {
+            width: 30%
+          }
+        }
+
+        /* Large Devices, Wide Screens */
+        @media only screen and (min-width : 1200px) {
+
+        }
+
+
+/*@media only screen and (max-width: 1199px) {
+  main {
+    padding: 0 20px 60px 20px;
+  }
+  h1 {
+    font-size: 60px
+  }
+}*/
