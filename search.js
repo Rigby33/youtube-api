@@ -37,6 +37,7 @@ function displayYouTubeSearchData (data) {
   setPageTokens(nextPageToken, prevPageToken);
   const youTubeResults = data.items.map((item, index) => renderYoutubeResults(item, nextPageToken, prevPageToken));
   $('.js-search-results').html(youTubeResults);
+  $('.pagination').show();
 }
 
 function setPageTokens (nextPageToken, prevPageToken) {
@@ -62,7 +63,6 @@ function watchSubmit() {
     // searchTerm = query
     // queryTarget.val("");
     getDataFromApi(query, null, displayYouTubeSearchData);
-    $('.pagination').show();
     lightboxRun();
   });
 }
