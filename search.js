@@ -20,7 +20,7 @@ function getDataFromApi (searchTerm, pageToken, callback) {
   }
   $.ajax(settings);
 }
-// href="https://youtube.com/watch?v=${result.id.videoId}"
+
 function renderYoutubeResults (result) {
   return `<div class="videoResult">
     <a href="https://youtube.com/embed/${result.id.videoId}" target="_blank" class="youtubelink"><h2>${result.snippet.title}</h2></a>
@@ -36,7 +36,7 @@ function displayYouTubeSearchData (data) {
   let prevPageToken = data.prevPageToken;
   setPageTokens(nextPageToken, prevPageToken);
   const youTubeResults = data.items.map((item, index) => renderYoutubeResults(item, nextPageToken, prevPageToken));
-  $('.js-search-results').html(youTubeResults);
+  $('.js-search-results').prop('hidden', false).html(youTubeResults);
   $('.pagination').show();
 }
 
@@ -73,7 +73,7 @@ function lightboxRun () {
     console.log('hi');
     const iframeVideo = $(event.currentTarget).attr('href');
     const item = `<div class="lightbox"><button class="close"><i class="fa fa-times-circle" aria-hidden="true"></i></button><div class="videoWrapper"><iframe width="560" height="349" src="${iframeVideo}"></iframe></div></div>`;
-    $('.lightboxcontainer').hide().html(item).fadeIn();
+    $('.lightboxcontainer').hide().prop('hidden', false).html(item).fadeIn();
     closeLightBox();
   });
 }
